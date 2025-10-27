@@ -5,12 +5,12 @@ Sistema de gerenciamento web desenvolvido com **React + Vite + Material-UI** par
 ## 📋 Características
 
 - ✅ **Design Preto e Branco**: Interface minimalista com gráficos coloridos
-- ✅ **Dashboard Completo**: Métricas e visualizações em tempo real
+- ✅ **Dashboard Completo**: Métricas e visualizações em tempo real com dados da API
 - ✅ **Gestão de Totens**: CRUD completo com mapa interativo
-- ✅ **Gestão de Perguntas**: Criação e gerenciamento de pesquisas
-- ✅ **Visualização de Usuários**: Histórico de interações
-- ✅ **Análise de Dados**: Gráficos e exportação para CSV
-- ✅ **API Integrada**: Conexão com backend FastAPI
+- ✅ **Gestão de Perguntas**: CRUD completo para criação e gerenciamento de pesquisas
+- ✅ **Gestão de Usuários**: Sistema de pontuação e gerenciamento completo
+- ✅ **Análise de Interações**: Estatísticas detalhadas por pergunta com filtros
+- ✅ **API Integrada**: Conexão completa com backend FastAPI
 - ✅ **Responsivo**: Funciona em desktop, tablet e mobile
 
 ## 🛠️ Stack Tecnológica
@@ -33,10 +33,11 @@ Sistema de gerenciamento web desenvolvido com **React + Vite + Material-UI** par
 
 ### Passo a passo
 
-1. **Navegue até a pasta do projeto**
+1. **Clone o repositório**
 
 ```bash
-cd projeto-gestao-totens
+git clone https://github.com/amand4priscil4/Bussola-Cidada.git
+cd Bussola-Cidada
 ```
 
 2. **Instale as dependências**
@@ -76,9 +77,9 @@ O projeto utiliza um tema customizado preto e branco:
 - **Gráficos Coloridos**: 
   - Verde (#10b981) - Respostas "Sim" e gráficos de sucesso
   - Vermelho (#ef4444) - Respostas "Não"
-  - Azul (#3b82f6) - Informações
-  - Roxo (#8b5cf6) - Destaques
-  - Amarelo (#f59e0b) - Avisos
+  - Azul (#3b82f6) - Informações e totens
+  - Roxo (#8b5cf6) - Destaques e usuários
+  - Amarelo (#f59e0b) - Avisos e perguntas
 
 ## 🔌 Integração com API
 
@@ -90,29 +91,32 @@ Desenvolvimento: http://localhost:8000
 
 ### Services Configurados
 
-Todos os serviços estão prontos e configurados em `src/services/`:
+Todos os serviços estão implementados e funcionais em `src/services/`:
 
-- **totemService.js** - Gerenciamento de totens
-- **perguntaService.js** - Gerenciamento de perguntas
-- **usuarioService.js** - Gerenciamento de usuários
-- **interacaoService.js** - Gerenciamento de interações
+- **totemService.js** - ✅ Gerenciamento completo de totens
+- **perguntaService.js** - ✅ Gerenciamento completo de perguntas
+- **usuarioService.js** - ✅ Gerenciamento de usuários e pontuação
+- **interacaoService.js** - ✅ Gerenciamento e análise de interações
 
 ### Exemplo de Uso
 
 ```javascript
 import { totemService } from './services/totemService';
+import { perguntaService } from './services/perguntaService';
+import { usuarioService } from './services/usuarioService';
+import { interacaoService } from './services/interacaoService';
 
-// Listar todos os totens
+// Listar totens
 const totens = await totemService.getAll();
 
-// Criar novo totem
-await totemService.create(-8.0522, -34.8953);
+// Criar pergunta
+await perguntaService.create("Você está satisfeito com o transporte?");
 
-// Buscar totem específico
-const totem = await totemService.getById('totem_id');
+// Atualizar pontuação do usuário
+await usuarioService.updatePontuacao('user123', 10);
 
-// Excluir totem
-await totemService.delete('totem_id');
+// Obter estatísticas de interações
+const interacoes = await interacaoService.getAll();
 ```
 
 ## 📁 Estrutura do Projeto
@@ -121,35 +125,38 @@ await totemService.delete('totem_id');
 src/
 ├── components/
 │   ├── layout/
-│   │   ├── Sidebar.jsx          # Menu lateral preto
-│   │   ├── AppBar.jsx           # Barra superior
-│   │   └── Layout.jsx           # Layout principal
+│   │   ├── Sidebar.jsx          # ✅ Menu lateral preto
+│   │   ├── AppBar.jsx           # ✅ Barra superior minimalista
+│   │   └── Layout.jsx           # ✅ Layout principal
 │   ├── common/
-│   │   ├── LoadingSpinner.jsx   # Indicador de carregamento
-│   │   ├── ErrorMessage.jsx     # Mensagens de erro
-│   │   └── ConfirmDialog.jsx    # Diálogo de confirmação
-│   └── charts/                  # Componentes de gráficos
+│   │   ├── LoadingSpinner.jsx   # ✅ Indicador de carregamento
+│   │   ├── ErrorMessage.jsx     # ✅ Mensagens de erro
+│   │   └── ConfirmDialog.jsx    # ✅ Diálogo de confirmação
+│   └── charts/                  # ✅ Componentes de gráficos
 ├── pages/
-│   ├── Dashboard.jsx            # Dashboard com gráficos coloridos
+│   ├── Dashboard.jsx            # ✅ Dashboard com dados reais da API
 │   ├── totens/
-│   │   ├── TotemList.jsx        # Lista de totens
-│   │   └── TotemCreate.jsx      # Criar totem com mapa
-│   ├── perguntas/               # (A implementar)
-│   ├── usuarios/                # (A implementar)
-│   └── interacoes/              # (A implementar)
+│   │   ├── TotemList.jsx        # ✅ Lista de totens
+│   │   └── TotemCreate.jsx      # ✅ Criar totem com mapa
+│   ├── perguntas/
+│   │   └── Perguntas.jsx        # ✅ CRUD completo de perguntas
+│   ├── usuarios/
+│   │   └── Usuarios.jsx         # ✅ Gestão completa de usuários
+│   └── interacoes/
+│       └── Interacoes.jsx       # ✅ Análise de interações por pergunta
 ├── services/
-│   ├── api.js                   # Configuração Axios
-│   ├── totemService.js          # ✅ Pronto
-│   ├── perguntaService.js       # ✅ Pronto
-│   ├── usuarioService.js        # ✅ Pronto
-│   └── interacaoService.js      # ✅ Pronto
+│   ├── api.js                   # ✅ Configuração Axios
+│   ├── totemService.js          # ✅ Implementado
+│   ├── perguntaService.js       # ✅ Implementado
+│   ├── usuarioService.js        # ✅ Implementado
+│   └── interacaoService.js      # ✅ Implementado
 ├── utils/
 │   ├── formatters.js            # ✅ Formatação de dados
 │   └── exporters.js             # ✅ Exportação CSV
 ├── contexts/
 │   └── NotificationContext.jsx  # ✅ Notificações globais
 ├── theme.js                     # ✅ Tema preto e branco
-├── routes.jsx                   # ✅ Configuração de rotas
+├── routes.jsx                   # ✅ Rotas configuradas
 └── App.jsx                      # ✅ Componente raiz
 ```
 
@@ -164,79 +171,107 @@ npm run build
 
 # Preview da build
 npm run preview
+
+# Lint
+npm run lint
 ```
 
 ## 📊 Funcionalidades Implementadas
 
 ### ✅ Dashboard
-- Cards com métricas: Totens, Perguntas, Usuários, Interações
-- Gráfico de linha: Interações ao longo do tempo (verde)
-- Gráfico de pizza: Distribuição Sim/Não (verde e vermelho)
-- Gráfico de barras: Top 5 Totens (azul)
-- Gráfico de barras: Top 5 Perguntas (amarelo)
+- Cards com métricas em tempo real: Totens, Perguntas, Usuários, Interações
+- Gráfico de linha: Interações dos últimos 7 dias com dados reais da API
+- Gráfico de pizza: Distribuição Sim/Não com percentuais reais
+- Gráfico de barras: Top 5 Totens mais utilizados (com nomes reais)
+- Gráfico de barras: Top 5 Perguntas mais respondidas (com texto real)
+- Atualização automática ao carregar a página
+- Tratamento de erros e estados vazios
 
 ### ✅ Gestão de Totens
-- Listagem com paginação e busca
+- Listagem completa com paginação
+- Busca por ID ou localização
 - Criação com mapa interativo (Leaflet)
-- Validação de coordenadas (-90/90, -180/180)
+- Validação de coordenadas
 - Exclusão com confirmação
-- Formato de exibição de IDs
+- Integração completa com API
+
+### ✅ Gestão de Perguntas
+- Listagem completa de todas as perguntas
+- Campo de busca em tempo real
+- Criação via dialog modal
+- Campo de texto multiline para perguntas longas
+- Exibição de ID (truncado) e data de criação
+- Exclusão com confirmação
+- Validação de campos vazios
+- Feedback de sucesso/erro
+
+### ✅ Gestão de Usuários
+- Listagem com busca por hash de usuário
+- Criação de novos usuários
+- Sistema completo de pontuação
+- Atualizar pontuação (valores positivos ou negativos)
+- Dialog mostrando pontuação atual antes de atualizar
+- Exclusão de usuários com confirmação
+- Resumo com total de usuários e pontuação acumulada
+- Validação de duplicidade ao criar
+- Chips coloridos para pontuação
+
+### ✅ Análise de Interações
+- Estatísticas agrupadas por pergunta
+- Campo de busca para filtrar perguntas específicas
+- Colunas: Pergunta, Total, Sim, Não, % Sim, % Não
+- Contadores em tempo real
+- Percentuais calculados automaticamente
+- Visualização com cores intuitivas (verde/vermelho)
+- Ordenação automática por mais respondidas
+- Resumo geral no rodapé
+- Estado vazio tratado
+- Integração completa com API de perguntas e interações
 
 ### ✅ Componentes de Layout
-- Sidebar preta com menu de navegação
-- AppBar com busca, filtros e perfil
+- Sidebar preta fixa com navegação
+- AppBar minimalista (apenas breadcrumb "Início / Página")
+- Botão "Adicionar" contextual (aparece só quando necessário)
 - Layout responsivo
 - Tema preto e branco customizado
+- Altura compacta do AppBar
 
 ### ✅ Sistema de Notificações
-- Snackbar para sucesso, erro, info e warning
+- Snackbar para feedback de ações
 - Context API para notificações globais
-- Feedback visual em todas as ações
+- Tipos: sucesso, erro, info e warning
+- Auto-dismiss configurável
 
 ### ✅ Utilitários
 - Formatação de datas (date-fns)
-- Formatação de coordenadas
-- Exportação para CSV
+- Formatação de coordenadas geográficas
+- Exportação para CSV (preparado)
 - Validações de formulário
+- Tratamento de erros da API
 
-## 📝 Próximas Implementações
+## 🎯 Rotas Disponíveis
 
-Para completar o sistema, ainda faltam implementar:
-
-### Perguntas
-- [ ] Página de listagem
-- [ ] Formulário de criação
-- [ ] Visualização de detalhes
-- [ ] Preview no totem
-
-### Usuários
-- [ ] Página de listagem
-- [ ] Visualização de histórico
-- [ ] Detalhes de interações
-
-### Interações
-- [ ] Página de listagem com filtros
-- [ ] Exportação de dados
-- [ ] Análises detalhadas
-- [ ] Visualização de score
-
-## 🎯 Como Continuar o Desenvolvimento
-
-1. **Criar páginas de Perguntas**: Use `TotemList.jsx` como base
-2. **Criar páginas de Usuários**: Similar à listagem de totens
-3. **Criar páginas de Interações**: Adicionar filtros e exportação
-4. **Adicionar página de detalhes do Totem**: Com mapa e estatísticas
-5. **Implementar sistema de autenticação** (fase futura)
+```
+/ ..................... Dashboard principal
+/totens ............... Lista de totens
+/totens/novo .......... Criar novo totem
+/perguntas ............ Gestão de perguntas
+/usuarios ............. Gestão de usuários
+/interacoes ........... Análise de interações
+```
 
 ## 🔧 Configuração da API
 
-O projeto já está configurado para se conectar com a API FastAPI.
+O projeto está configurado para se conectar com a API FastAPI hospedada no Render.
 
 ### Verificar Endpoints
 
 Você pode testar a API acessando:
 - https://projeto-bigdata.onrender.com/docs (Documentação Swagger)
-- https://projeto-bigdata.onrender.com/health (Health check)
+- https://projeto-bigdata.onrender.com/totens (Listar totens)
+- https://projeto-bigdata.onrender.com/perguntas (Listar perguntas)
+- https://projeto-bigdata.onrender.com/usuarios (Listar usuários)
+- https://projeto-bigdata.onrender.com/interacoes (Listar interações)
 
 ### Trocar URL da API
 
@@ -246,6 +281,8 @@ Edite o arquivo `.env`:
 VITE_API_BASE_URL=sua-nova-url-aqui
 ```
 
+**Importante:** Não adicione barra no final da URL!
+
 ## 🐛 Troubleshooting
 
 ### Erro: "Cannot find module 'leaflet'"
@@ -254,20 +291,64 @@ npm install leaflet react-leaflet --save
 ```
 
 ### Mapa não aparece
-Certifique-se de que o CSS do Leaflet está sendo importado:
+Certifique-se de que o CSS do Leaflet está sendo importado em `TotemCreate.jsx`:
 ```javascript
 import 'leaflet/dist/leaflet.css';
 ```
 
 ### Erro de CORS
-A API precisa estar configurada para aceitar requisições do frontend. Verifique os headers CORS na API.
+A API precisa estar configurada para aceitar requisições do frontend. Verifique se o CORS está habilitado no backend FastAPI:
+
+```python
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+### API retorna erro 404
+Certifique-se de que as rotas não têm barra no final:
+- ✅ `/totens`
+- ❌ `/totens/`
+
+## 📈 Próximas Melhorias Sugeridas
+
+- [ ] Sistema de autenticação e login
+- [ ] Página de detalhes do totem com estatísticas individuais
+- [ ] Exportação de relatórios em PDF
+- [ ] Filtros avançados (por data, totem, pergunta)
+- [ ] Gráficos interativos com drill-down
+- [ ] Dashboard personalizado por usuário
+- [ ] Notificações push
+- [ ] Modo escuro/claro
+- [ ] Testes unitários e E2E
+
+## 👥 Contribuindo
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
-Educacional
+Este projeto é educacional.
+
+## 🔗 Links
+
+- **Repositório**: https://github.com/amand4priscil4/Bussola-Cidada.git
+- **API Backend**: https://projeto-bigdata.onrender.com
+- **Documentação API**: https://projeto-bigdata.onrender.com/docs
 
 ---
 
-**Status**: Em desenvolvimento  
+**Status**: ✅ Funcional  
 **Versão**: 1.0.0  
-**Última atualização**: 27/Outubro 2025
+**Última atualização**: 27 de Outubro de 2025  
+**Desenvolvido com**: ❤️ React + Vite + Material-UI
