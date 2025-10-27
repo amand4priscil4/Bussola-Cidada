@@ -264,10 +264,10 @@ A API precisa estar configurada para aceitar requisições do frontend. Verifiqu
 
 ## 📄 Licença
 
-Sistema desenvolvido para gestão de totens de coleta de dados em pontos de ônibus.
+Educacional
 
 ---
 
 **Status**: Em desenvolvimento  
 **Versão**: 1.0.0  
-**Última atualização**: Janeiro 2025
+**Última atualização**: 27/Outubro 2025
