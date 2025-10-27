@@ -343,8 +343,7 @@ Este projeto é educacional.
 ## 🔗 Links
 
 - **Repositório**: https://github.com/amand4priscil4/Bussola-Cidada.git
-- **API Backend**: https://projeto-bigdata.onrender.com
-- **Documentação API**: https://projeto-bigdata.onrender.com/docs
+- **API Backend**: https://github.com/LucasSSilvaJS/projeto_bigdata
 
 ---
 
