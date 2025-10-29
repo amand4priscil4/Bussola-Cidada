@@ -1,8 +1,8 @@
-# 🚀 Sistema de Gestão de Totens - Plataforma Administrativa
+# Sistema de Gestão de Totens - Plataforma Administrativa
 
 Sistema de gerenciamento web desenvolvido com **React + Vite + Material-UI** para administrar totens de coleta de dados em pontos de ônibus.
 
-## 📋 Características
+## Características
 
 - ✅ **Design Preto e Branco**: Interface minimalista com gráficos coloridos
 - ✅ **Dashboard Completo**: Métricas e visualizações em tempo real com dados da API
@@ -24,7 +24,7 @@ Sistema de gerenciamento web desenvolvido com **React + Vite + Material-UI** par
 - **React Leaflet** - Mapas interativos
 - **date-fns** - Manipulação de datas
 
-## 📦 Instalação
+## Instalação
 
 ### Pré-requisitos
 
@@ -68,7 +68,7 @@ npm run dev
 
 O projeto estará disponível em: `http://localhost:5173`
 
-## 🎨 Tema e Design
+## Tema e Design
 
 O projeto utiliza um tema customizado preto e branco:
 
@@ -81,7 +81,7 @@ O projeto utiliza um tema customizado preto e branco:
   - Roxo (#8b5cf6) - Destaques e usuários
   - Amarelo (#f59e0b) - Avisos e perguntas
 
-## 🔌 Integração com API
+## Integração com API
 
 ### Base URL
 ```
@@ -160,7 +160,7 @@ src/
 └── App.jsx                      # ✅ Componente raiz
 ```
 
-## 🚀 Comandos Disponíveis
+## Comandos Disponíveis
 
 ```bash
 # Desenvolvimento
@@ -176,7 +176,7 @@ npm run preview
 npm run lint
 ```
 
-## 📊 Funcionalidades Implementadas
+## Funcionalidades Implementadas
 
 ### ✅ Dashboard
 - Cards com métricas em tempo real: Totens, Perguntas, Usuários, Interações
@@ -249,7 +249,7 @@ npm run lint
 - Validações de formulário
 - Tratamento de erros da API
 
-## 🎯 Rotas Disponíveis
+##  Rotas Disponíveis
 
 ```
 / ..................... Dashboard principal
@@ -260,7 +260,7 @@ npm run lint
 /interacoes ........... Análise de interações
 ```
 
-## 🔧 Configuração da API
+## Configuração da API
 
 O projeto está configurado para se conectar com a API FastAPI hospedada no Render.
 
@@ -283,7 +283,7 @@ VITE_API_BASE_URL=sua-nova-url-aqui
 
 **Importante:** Não adicione barra no final da URL!
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Erro: "Cannot find module 'leaflet'"
 ```bash
@@ -328,7 +328,7 @@ Certifique-se de que as rotas não têm barra no final:
 - [ ] Modo escuro/claro
 - [ ] Testes unitários e E2E
 
-## 👥 Contribuindo
+## Contribuindo
 
 1. Fork o projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
